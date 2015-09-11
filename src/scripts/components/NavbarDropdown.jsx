@@ -61,47 +61,49 @@ export default class NavbarDropdown extends React.Component {
       };
     }
 
-    renderChildren = () => {
-      const {children} = this.props;
+  renderChildren = () => {
+    const {children} = this.props;
 
-      const newChildren = React.Children.map(children, (child) => {
-        return React.cloneElement(child,
-            {
-               open: this.state.open,
-               optionSelect: this.handlePageClick
-            });
-      });
-      return newChildren;
+    const newChildren = React.Children.map(children, (child) => {
+      return React.cloneElement(child,
+          {
+             handleDocumentClick: this.documentClickHandler
+          });
+    });
+    return newChildren;
+  }
+
+    triggerClickHandler = () => {
+      this.setState(
+          {
+              open: true
+          });
     }
 
-    dropdownToggle = (e) => {
-      e.preventDefault();
-
+    documentClickHandler = () => {
       this.setState(
-        {open: true}
-      );
-
-      document.addEventListener('click', this.handlePageClick);
-    }
-
-    handlePageClick = () => {
-      this.setState(
-        {open: false}
-      );
-
-      document.removeEventListener('click', this.handlePageClick);
+          {
+          open: false
+          });
     }
 
     render() {
       const {style, name} = this.props;
       const defStyle = this.getStyles();
+
+      let menu;
+
+      if (this.state.open) {
+        menu = this.renderChildren();
+      }
+
       return (
-        <li ref= "dropdown" style={[defStyle.dropdown, style && style]}>
-            <a ref="link" onClick={this.dropdownToggle} href="#" style={[defStyle.link]}>
-                {name}{' '}
+        <li key= "dropdown" style={[defStyle.dropdown, style && style]}>
+            <a key="link" onClick={this.triggerClickHandler} href="#" style={[defStyle.link]}>
+                {name}
                 <b style={[defStyle.caret]}></b>
             </a>
-            {this.renderChildren()}
+            {menu}
         </li>
       );
     }
