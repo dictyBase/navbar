@@ -125,7 +125,7 @@
 	);
 
 	/** ~~~ Navigation 4 ~~~~ */
-	var navitems4 = [{ link: '#', title: 'Learn ES2015' }, { link: '#', title: 'Setup' }, { link: '#', title: 'Usage' }, { link: '#', title: 'Advanced' }, { link: '#', title: 'Try it out' }, { link: '#', title: 'FAQ' }];
+	var navitems4 = [{ link: '#', title: 'Setup' }, { link: '#', title: 'Usage' }, { link: '#', title: 'Advanced' }, { link: '#', title: 'Try it out' }, { link: '#', title: 'FAQ' }];
 
 	var dropdownItems = [{ href: '#', name: 'ES2015' }, { href: '#', name: 'Setup' }, { href: '#', name: 'Usage' }, { href: '#', name: 'Advanced' }, { href: '#', name: 'Try it' }, { href: '#', name: 'FAQ' }];
 
@@ -355,7 +355,9 @@
 	        currentQueue = queue;
 	        queue = [];
 	        while (++queueIndex < len) {
-	            currentQueue[queueIndex].run();
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
 	        }
 	        queueIndex = -1;
 	        len = queue.length;
@@ -407,7 +409,6 @@
 	    throw new Error('process.binding is not supported');
 	};
 
-	// TODO(shtylman)
 	process.cwd = function () { return '/' };
 	process.chdir = function (dir) {
 	    throw new Error('process.chdir is not supported');
@@ -20575,22 +20576,40 @@
 	                navbar: {
 	                    backgroundColor: '#f8f8f8',
 	                    border: '1px solid #e7e7e7',
-	                    borderRadius: '4px',
+	                    borderRadius: '0px',
 	                    position: 'relative',
+	                    top: '0px',
 	                    minHeight: '50px',
 	                    marginBottom: '20px',
 	                    display: 'block',
-	                    boxSizing: 'border-box',
-
-	                    '@media (min-width: 768px)': {
-	                        borderRadius: '4px'
-	                    }
+	                    boxSizing: 'border-box'
 	                },
 	                container: {
 	                    paddingRight: '15px',
 	                    paddingLeft: '15px',
 	                    marginRight: 'auto',
 	                    marginLeft: 'auto',
+	                    boxSizing: 'border-box',
+
+	                    '@media (min-width: 768px)': {
+	                        width: '750px'
+	                    },
+	                    '@media (min-width: 992px)': {
+	                        width: '970px'
+	                    },
+	                    '@media (min-width: 1200px)': {
+	                        width: '1170px'
+	                    }
+	                },
+	                pseudoBefore: {
+	                    display: 'table',
+	                    content: ' ',
+	                    boxSizing: 'border-box'
+	                },
+	                pseudoAfter: {
+	                    clear: 'both',
+	                    display: 'table',
+	                    content: ' ',
 	                    boxSizing: 'border-box'
 	                }
 	            };
@@ -20608,12 +20627,16 @@
 
 	            return _react2['default'].createElement(
 	                'nav',
-	                { style: [defStyle.navbar, navStyle && navStyle] },
+	                { ref: 'navbar', style: [defStyle.navbar, navStyle && navStyle] },
+	                _react2['default'].createElement('span', { style: [defStyle.pseudoBefore] }),
 	                _react2['default'].createElement(
 	                    'div',
-	                    { style: [defStyle.container, contStyle && contStyle] },
-	                    children
-	                )
+	                    { ref: 'container', style: [defStyle.container, contStyle && contStyle] },
+	                    _react2['default'].createElement('span', { style: [defStyle.pseudoBefore] }),
+	                    children,
+	                    _react2['default'].createElement('span', { style: [defStyle.pseudoAfter] })
+	                ),
+	                _react2['default'].createElement('span', { style: [defStyle.pseudoAfter] })
 	            );
 	        }
 	    }], [{
@@ -20655,23 +20678,23 @@
 /* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/* @flow */
-
 	'use strict';
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var resolveStyles = __webpack_require__(160);
 	var printStyles = __webpack_require__(168);
 
 	var enhanceWithRadium = function enhanceWithRadium(ComposedComponent) {
 	  var RadiumEnhancer = (function (_ComposedComponent) {
+	    _inherits(RadiumEnhancer, _ComposedComponent);
+
 	    function RadiumEnhancer() {
 	      _classCallCheck(this, RadiumEnhancer);
 
@@ -20685,7 +20708,12 @@
 	      }
 	    }
 
-	    _inherits(RadiumEnhancer, _ComposedComponent);
+	    // Class inheritance uses Object.create and because of __proto__ issues
+	    // with IE <10 any static properties of the superclass aren't inherited and
+	    // so need to be manually populated
+	    // See http://babeljs.io/docs/advanced/caveats/#classes-10-and-below-
+	    // This also fixes React Hot Loader by exposing the original components top level
+	    // prototype methods on the Radium enhanced prototype as discussed in #219.
 
 	    _createClass(RadiumEnhancer, [{
 	      key: 'render',
@@ -20715,28 +20743,12 @@
 	    return RadiumEnhancer;
 	  })(ComposedComponent);
 
-	  // Class inheritance uses Object.create and because of __proto__ issues
-	  // with IE <10 any static properties of the superclass aren't inherited and
-	  // so need to be manually populated
-	  // See http://babeljs.io/docs/advanced/caveats/#classes-10-and-below-
-	  var staticKeys = ['defaultProps', 'propTypes', 'contextTypes', 'childContextTypes'];
-
-	  staticKeys.forEach(function (key) {
-	    if (ComposedComponent.hasOwnProperty(key)) {
-	      RadiumEnhancer[key] = ComposedComponent[key];
+	  Object.getOwnPropertyNames(ComposedComponent.prototype).forEach(function (key) {
+	    if (!RadiumEnhancer.prototype.hasOwnProperty(key)) {
+	      var descriptor = Object.getOwnPropertyDescriptor(ComposedComponent.prototype, key);
+	      Object.defineProperty(RadiumEnhancer.prototype, key, descriptor);
 	    }
 	  });
-
-	  if (process.env.NODE_ENV !== 'production') {
-	    // This fixes React Hot Loader by exposing the original components top level
-	    // prototype methods on the Radium enhanced prototype as discussed in #219.
-	    Object.keys(ComposedComponent.prototype).forEach(function (key) {
-	      if (!RadiumEnhancer.prototype.hasOwnProperty(key)) {
-	        var descriptor = Object.getOwnPropertyDescriptor(ComposedComponent.prototype, key);
-	        Object.defineProperty(RadiumEnhancer.prototype, key, descriptor);
-	      }
-	    });
-	  }
 
 	  RadiumEnhancer.displayName = ComposedComponent.displayName || ComposedComponent.name || 'Component';
 
@@ -20746,15 +20758,12 @@
 	};
 
 	module.exports = enhanceWithRadium;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/* @flow */
-
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -20878,11 +20887,12 @@
 	// twice, whenever we clone an element add a special non-enumerable prop to
 	// make sure we don't process this element again.
 	var _cloneElement = function _cloneElement(renderedElement, newProps, newChildren) {
-	  var clone = React.cloneElement(renderedElement, _extends({}, newProps, {
-	    _radiumDidResolveStyles: true
-	  }), newChildren);
+	  // Only add flag if this is a normal DOM element
+	  if (typeof renderedElement.type === 'string') {
+	    newProps = _extends({}, newProps, { _radiumDidResolveStyles: true });
+	  }
 
-	  return clone;
+	  return React.cloneElement(renderedElement, newProps, newChildren);
 	};
 
 	//
@@ -20898,7 +20908,12 @@
 	  // ReactElement
 	  existingKeyMap = existingKeyMap || {};
 
-	  if (!renderedElement || renderedElement.props && renderedElement.props._radiumDidResolveStyles) {
+	  if (!renderedElement ||
+	  // Bail if we've already processed this element. This ensures that only the
+	  // owner of an element processes that element, since the owner's render
+	  // function will be called first (which will always be the case, since you
+	  // can't know what else to render until you render the parent component).
+	  renderedElement.props && renderedElement.props._radiumDidResolveStyles) {
 	    return renderedElement;
 	  }
 
@@ -21117,18 +21132,11 @@
 	};
 
 	module.exports = resolveStyles;
-
-	// Bail if we've already processed this element. This ensures that only the
-	// owner of an element processes that element, since the owner's render
-	// function will be called first (which will always be the case, since you
-	// can't know what else to render until you render the parent component).
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 161 */
 /***/ function(module, exports) {
-
-	/* @flow */
 
 	'use strict';
 
@@ -21172,8 +21180,6 @@
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* @flow */
-
 	'use strict';
 
 	var getStateKey = __webpack_require__(163);
@@ -21187,7 +21193,7 @@
 
 	  var key = getStateKey(elementKey);
 
-	  return !!(state && state._radiumStyleState && state._radiumStyleState[key] && state._radiumStyleState[key][value]) || false;
+	  return !!(state && state._radiumStyleState && state._radiumStyleState[key] && state._radiumStyleState[key][value]);
 	};
 
 	module.exports = getState;
@@ -21195,8 +21201,6 @@
 /***/ },
 /* 163 */
 /***/ function(module, exports) {
-
-	/* @flow */
 
 	'use strict';
 
@@ -21213,6 +21217,8 @@
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Based on https://github.com/jsstyles/css-vendor, but without having to
 	 * convert between different cases all the time.
+	 *
+	 * 
 	 */
 
 	'use strict';
@@ -21384,7 +21390,6 @@
 	  }
 
 	  // Based on http://davidwalsh.name/vendor-prefix
-	  var cssVendorPrefix;
 	  var prefixMatch;
 	  var windowStyles = window.getComputedStyle(document.documentElement, '');
 
@@ -21399,9 +21404,9 @@
 	    }
 	  }
 
-	  cssVendorPrefix = prefixMatch && prefixMatch[0];
+	  var cssVendorPrefix = prefixMatch && prefixMatch[0];
 
-	  prefixInfo = infoByCssPrefix[cssVendorPrefix] || prefixInfo;
+	  prefixInfo = cssVendorPrefix && infoByCssPrefix[cssVendorPrefix] ? infoByCssPrefix[cssVendorPrefix] : prefixInfo;
 	}
 
 	var _camelCaseRegex = /([a-z])?([A-Z])/g;
@@ -21507,12 +21512,7 @@
 	    }
 	  }
 
-	  var cacheKey = Array.isArray(value) ? value.join(' || ')
-	  /* babel-eslint bug: https://github.com/babel/babel-eslint/issues/149 */
-	  /* eslint-disable space-infix-ops */
-	  :
-	  /* eslint-enable space-infix-ops */
-	  property + value;
+	  var cacheKey = Array.isArray(value) ? value.join(' || ') : property + value;
 
 	  if (prefixedValueCache.hasOwnProperty(cacheKey)) {
 	    return prefixedValueCache[cacheKey];
@@ -21581,8 +21581,9 @@
 
 	// Returns a new style object with vendor prefixes added to property names
 	// and values.
-	var getPrefixedStyle = function getPrefixedStyle(component, style, mode /* 'css' or 'js' */) {
-	  mode = mode || 'js';
+	var getPrefixedStyle = function getPrefixedStyle(component, // ReactComponent
+	style) {
+	  var mode = arguments.length <= 2 || arguments[2] === undefined ? 'js' : arguments[2];
 
 	  if (!ExecutionEnvironment.canUseDOM) {
 	    return Object.keys(style).reduce(function (newStyle, key) {
@@ -21706,8 +21707,6 @@
 /* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* @flow */
-
 	'use strict';
 
 	var ExecutionEnvironment = __webpack_require__(165);
@@ -21733,8 +21732,6 @@
 /***/ },
 /* 168 */
 /***/ function(module, exports) {
-
-	/* @flow */
 
 	"use strict";
 
@@ -21771,7 +21768,7 @@
 
 	    // This breaks unitless values but they'll be deprecated soon anyway
 	    // https://github.com/facebook/react/issues/1873
-	    value = "" + value + " !important";
+	    value = value + " !important";
 	    importantStyleObj[key] = value;
 	  });
 
@@ -21903,8 +21900,6 @@
 /* 170 */
 /***/ function(module, exports) {
 
-	/* @flow */
-
 	'use strict';
 
 	var createMarkupForStyles = function createMarkupForStyles(style, spaces) {
@@ -21966,8 +21961,6 @@
 /***/ },
 /* 172 */
 /***/ function(module, exports, __webpack_require__) {
-
-	/* @flow */
 
 	'use strict';
 
@@ -22065,6 +22058,7 @@
 	                base: {
 	                    position: 'relative',
 	                    display: 'block',
+	                    boxSizing: 'border-box',
 
 	                    '@media (min-width: 768px)': {
 	                        float: 'left'
@@ -22180,7 +22174,6 @@
 	                    marginRight: '-15px',
 	                    marginLeft: '-15px',
 	                    boxSizing: 'border-box',
-	                    display: 'table',
 
 	                    '@media (min-width: 768px)': {
 	                        float: 'left',
@@ -22212,6 +22205,56 @@
 	                    '@media (min-width: 768px)': {
 	                        marginLeft: '-15px'
 	                    }
+	                },
+	                navbarToggle: {
+	                    position: 'relative',
+	                    float: 'right',
+	                    padding: '9px 10px',
+	                    marginTop: '8px',
+	                    marginRight: '15px',
+	                    marginBottom: '8px',
+	                    backgroundColor: 'transparent',
+	                    backgroundImage: 'none',
+	                    borderWidth: '1px',
+	                    borderStyle: 'solid',
+	                    borderRadius: '4px',
+	                    borderColor: '#ddd',
+	                    cursor: 'pointer',
+	                    boxSizing: 'border-box',
+
+	                    ':hover': {
+	                        backgroundColor: '#ddd'
+	                    },
+
+	                    ':focus': {
+	                        outline: '0',
+	                        backgroundColor: '#ddd'
+	                    },
+	                    '@media (min-width: 768px)': {
+	                        display: 'none'
+	                    }
+	                },
+	                srOnly: {
+	                    position: 'absolute',
+	                    width: '1px',
+	                    height: '1px',
+	                    padding: '0',
+	                    margin: '-1px',
+	                    overflow: 'hidden',
+	                    clip: 'rect(0, 0, 0, 0)',
+	                    borderWidth: '0',
+	                    borderStyle: 'none',
+	                    boxSizing: 'border-box'
+	                },
+	                iconBar: {
+	                    display: 'block',
+	                    width: '22px',
+	                    height: '2px',
+	                    borderRadius: '1px',
+	                    backgroundColor: '#888'
+	                },
+	                burger: {
+	                    marginTop: '4px'
 	                }
 	            };
 	        };
@@ -22230,6 +22273,18 @@
 	            return _react2['default'].createElement(
 	                'div',
 	                { key: 'header', style: [defStyle.header, headerStyle && headerStyle] },
+	                _react2['default'].createElement(
+	                    'button',
+	                    { type: 'button', style: [defStyle.navbarToggle] },
+	                    _react2['default'].createElement(
+	                        'span',
+	                        { style: [defStyle.srOnly] },
+	                        'Toggle navigation'
+	                    ),
+	                    _react2['default'].createElement('span', { style: [defStyle.iconBar] }),
+	                    _react2['default'].createElement('span', { style: [defStyle.iconBar, defStyle.burger] }),
+	                    _react2['default'].createElement('span', { style: [defStyle.iconBar, defStyle.burger] })
+	                ),
 	                _react2['default'].createElement(
 	                    'a',
 	                    { key: 'brand', style: [defStyle.brand, brandStyle && brandStyle], href: href },
@@ -22305,6 +22360,7 @@
 	                    margin: '7.5px -15px',
 	                    listStyle: 'outside none none',
 	                    paddingLeft: '0',
+	                    boxSizing: 'border-box',
 
 	                    fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
 	                    fontSize: '14px',
@@ -22315,17 +22371,17 @@
 	                    }
 	                },
 	                collapse: {
-	                    borderColor: '#E7E7E7',
-	                    marginRight: '-15px',
-	                    marginLeft: '-15px',
-	                    maxHeight: '340px',
 	                    paddingRight: '15px',
 	                    paddingLeft: '15px',
 	                    overflowX: 'visible',
 	                    borderTop: '1px solid transparent',
-	                    boxShadow: '0px 1px 0px rgba(255, 255, 255, 0.1)',
-	                    display: 'none',
+	                    boxShadow: '0px 1px 0px rgba(255, 255, 255, .1) inset',
+	                    borderColor: '#E7E7E7',
+	                    marginRight: '-15px',
+	                    marginLeft: '-15px',
+	                    maxHeight: '340px',
 	                    boxSizing: 'border-box',
+	                    display: 'none',
 
 	                    '@media (min-width: 768px)': {
 	                        marginRight: '0px',
@@ -22340,6 +22396,17 @@
 	                        borderTop: '0px none',
 	                        boxShadow: 'none'
 	                    }
+	                },
+	                pseudoBefore: {
+	                    display: 'table',
+	                    content: ' ',
+	                    boxSizing: 'border-box'
+	                },
+	                pseudoAfter: {
+	                    clear: 'both',
+	                    display: 'table',
+	                    content: ' ',
+	                    boxSizing: 'border-box'
 	                }
 	            };
 	        };
@@ -22373,11 +22440,15 @@
 	            return _react2['default'].createElement(
 	                'div',
 	                { ref: 'collapse', style: [defStyle.collapse] },
+	                _react2['default'].createElement('span', { style: [defStyle.pseudoBefore] }),
 	                _react2['default'].createElement(
 	                    'ul',
 	                    { ref: 'navitems', style: [defStyle.base, style && style] },
-	                    this.renderChildren()
-	                )
+	                    _react2['default'].createElement('span', { style: [defStyle.pseudoBefore] }),
+	                    this.renderChildren(),
+	                    _react2['default'].createElement('span', { style: [defStyle.pseudoAfter] })
+	                ),
+	                _react2['default'].createElement('span', { style: [defStyle.pseudoAfter] })
 	            );
 	        }
 	    }], [{
@@ -22445,6 +22516,8 @@
 	        dropdown: {
 	          position: 'relative',
 	          display: 'block',
+	          boxSizing: 'border-box',
+
 	          '@media (min-width: 768px)': {
 	            float: 'left'
 	          }
@@ -22640,7 +22713,7 @@
 	          float: 'left',
 	          minWidth: '160px',
 	          margin: '0px',
-	          padding: '5px 0',
+	          padding: '5px 0px',
 	          fontSize: '14px',
 	          textAlign: 'left',
 	          listStyle: 'none',
@@ -22649,7 +22722,8 @@
 	          border: '1px solid #ccc',
 	          borderBottomLeftRadius: '4px',
 	          borderBottomRightRadius: '4px',
-	          boxShadow: '0 6px 12px #C9C9C9'
+	          boxShadow: '0 6px 12px #C9C9C9',
+	          boxSizing: 'border-box'
 	        },
 	        link: {
 	          display: 'block',
@@ -22660,6 +22734,7 @@
 	          color: '#333',
 	          whiteSpace: 'nowrap',
 	          textDecoration: 'none',
+	          boxSizing: 'border-box',
 
 	          ':hover': {
 	            color: '#262626',
