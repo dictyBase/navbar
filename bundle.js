@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -56,9 +56,9 @@
 
 	var _componentsNavbar2 = _interopRequireDefault(_componentsNavbar);
 
-	var _componentsItem = __webpack_require__(173);
+	var _componentsNavItem = __webpack_require__(173);
 
-	var _componentsItem2 = _interopRequireDefault(_componentsItem);
+	var _componentsNavItem2 = _interopRequireDefault(_componentsNavItem);
 
 	var _componentsNavbarHeader = __webpack_require__(174);
 
@@ -76,68 +76,19 @@
 
 	var _componentsDropdownMenu2 = _interopRequireDefault(_componentsDropdownMenu);
 
-	/** ~~~ Navigation 1 ~~~~ */
-	var navitems = [{ link: '#', title: 'Learn ES2015' }, { link: '#', title: 'Setup' }, { link: '#', title: 'Usage' }, { link: '#', title: 'Advanced' }, { link: '#', title: 'Try it out' }, { link: '#', title: 'FAQ' }];
-
-	var navbarInstance = _react2['default'].createElement(
-	    _componentsNavbar2['default'],
-	    null,
-	    _react2['default'].createElement(_componentsNavbarHeader2['default'], { href: 'http://www.google.com', name: 'Babel' }),
-	    _react2['default'].createElement(
-	        _componentsNavbarItems2['default'],
-	        null,
-	        navitems.map(function (item) {
-	            return _react2['default'].createElement(_componentsItem2['default'], { key: navitems.indexOf(item), link: item.link, title: item.title });
-	        })
-	    )
-	);
-
-	/** ~~~ Navigation 2 ~~~~ */
-	var navitems2 = [{ link: '#', title: 'Homepage' }, { link: '#', title: 'Contact' }, { link: '#', title: 'Northwestern' }, { link: '#', title: 'About' }, { link: '#', title: 'See more' }, { link: '#', title: 'NUCATS' }];
-
-	var navbarInstance2 = _react2['default'].createElement(
-	    _componentsNavbar2['default'],
-	    null,
-	    _react2['default'].createElement(_componentsNavbarHeader2['default'], { href: 'http://www.google.com', name: 'Babel' }),
-	    _react2['default'].createElement(
-	        _componentsNavbarItems2['default'],
-	        null,
-	        navitems2.map(function (item) {
-	            return _react2['default'].createElement(_componentsItem2['default'], { key: navitems2.indexOf(item), link: item.link, title: item.title });
-	        })
-	    )
-	);
-
-	/** ~~~ Navigation 3 ~~~~ */
-	var navitems3 = [{ link: '#', title: 'GIT' }, { link: '#', title: 'Usage' }, { link: '#', title: 'About Us' }, { link: '#', title: 'More Info' }, { link: '#', title: 'New Features' }, { link: '#', title: 'Contact' }];
-
-	var navbarInstance3 = _react2['default'].createElement(
-	    _componentsNavbar2['default'],
-	    null,
-	    _react2['default'].createElement(_componentsNavbarHeader2['default'], { href: 'http://www.google.com', name: 'Babel' }),
-	    _react2['default'].createElement(
-	        _componentsNavbarItems2['default'],
-	        null,
-	        navitems3.map(function (item) {
-	            return _react2['default'].createElement(_componentsItem2['default'], { key: navitems3.indexOf(item), link: item.link, title: item.title });
-	        })
-	    )
-	);
-
-	/** ~~~ Navigation 4 ~~~~ */
-	var navitems4 = [{ link: '#', title: 'Setup' }, { link: '#', title: 'Usage' }, { link: '#', title: 'Advanced' }, { link: '#', title: 'Try it out' }, { link: '#', title: 'FAQ' }];
+	var navitems = [{ link: '#', title: 'Setup' }, { link: '#', title: 'Usage' }, { link: '#', title: 'Advanced' }, { link: '#', title: 'Try it out' }, { link: '#', title: 'FAQ' }];
 
 	var dropdownItems = [{ href: '#', name: 'ES2015' }, { href: '#', name: 'Setup' }, { href: '#', name: 'Usage' }, { href: '#', name: 'Advanced' }, { href: '#', name: 'Try it' }, { href: '#', name: 'FAQ' }];
 
 	var navbarInstance4 = _react2['default'].createElement(
 	    _componentsNavbar2['default'],
 	    null,
-	    _react2['default'].createElement(_componentsNavbarHeader2['default'], { href: 'http://www.google.com', name: 'Babel' }),
+	    _react2['default'].createElement(_componentsNavbarHeader2['default'], { href: 'http://www.dictybase.org', name: 'dictyBase' }),
 	    _react2['default'].createElement(
 	        _componentsNavbarItems2['default'],
 	        null,
-	        navitems4.map(function (item) {
-	            return _react2['default'].createElement(_componentsItem2['default'], { key: navitems4.indexOf(item), link: item.link, title: item.title });
+	        navitems.map(function (item) {
+	            return _react2['default'].createElement(_componentsNavItem2['default'], { key: navitems.indexOf(item), link: item.link, title: item.title });
 	        }),
 	        _react2['default'].createElement(
 	            _componentsNavbarDropdown2['default'],
@@ -152,10 +103,7 @@
 	    )
 	);
 
-	/*React.render(navbarInstance, document.getElementById('navigation_bar'));
-	React.render(navbarInstance2, document.getElementById('navigation_bar2'));
-	React.render(navbarInstance3, document.getElementById('navigation_bar3'));*/
-	_react2['default'].render(navbarInstance4, document.getElementById('navigation_bar4'));
+	_react2['default'].render(navbarInstance4, document.getElementById('navigation_bar'));
 
 /***/ },
 /* 1 */
@@ -20565,11 +20513,16 @@
 	    _inherits(Navbar, _React$Component);
 
 	    function Navbar() {
+	        var _this = this;
+
 	        _classCallCheck(this, _Navbar);
 
 	        _get(Object.getPrototypeOf(_Navbar.prototype), 'constructor', this).apply(this, arguments);
 
 	        this.displayName = 'Navigation bar';
+	        this.state = {
+	            collapseIn: false
+	        };
 
 	        this.getStyles = function () {
 	            return {
@@ -20614,6 +20567,21 @@
 	                }
 	            };
 	        };
+
+	        this.renderChildren = function () {
+	            var children = _this.props.children;
+
+	            return _react2['default'].Children.map(children, function (child) {
+	                return _react2['default'].cloneElement(child, {
+	                    navbarToggle: _this.navbarToggle,
+	                    collapseIn: _this.state.collapseIn
+	                });
+	            });
+	        };
+
+	        this.navbarToggle = function () {
+	            _this.setState({ collapseIn: !_this.state.collapseIn });
+	        };
 	    }
 
 	    _createClass(Navbar, [{
@@ -20623,7 +20591,6 @@
 	            var _props = this.props;
 	            var navStyle = _props.navStyle;
 	            var contStyle = _props.contStyle;
-	            var children = _props.children;
 
 	            return _react2['default'].createElement(
 	                'nav',
@@ -20633,7 +20600,7 @@
 	                    'div',
 	                    { ref: 'container', style: [defStyle.container, contStyle && contStyle] },
 	                    _react2['default'].createElement('span', { style: [defStyle.pseudoBefore] }),
-	                    children,
+	                    this.renderChildren(),
 	                    _react2['default'].createElement('span', { style: [defStyle.pseudoAfter] })
 	                ),
 	                _react2['default'].createElement('span', { style: [defStyle.pseudoAfter] })
@@ -22043,13 +22010,13 @@
 
 	var _radium2 = _interopRequireDefault(_radium);
 
-	var Item = (function (_React$Component) {
-	    _inherits(Item, _React$Component);
+	var NavItem = (function (_React$Component) {
+	    _inherits(NavItem, _React$Component);
 
-	    function Item() {
-	        _classCallCheck(this, _Item);
+	    function NavItem() {
+	        _classCallCheck(this, _NavItem);
 
-	        _get(Object.getPrototypeOf(_Item.prototype), 'constructor', this).apply(this, arguments);
+	        _get(Object.getPrototypeOf(_NavItem.prototype), 'constructor', this).apply(this, arguments);
 
 	        this.displayName = 'Navigation bar item';
 
@@ -22065,7 +22032,10 @@
 	                    }
 	                },
 	                link: {
-	                    padding: '10px 15px',
+	                    paddingTop: '10px',
+	                    paddingBottom: '10px',
+	                    paddingLeft: '15px',
+	                    paddingRight: '15px',
 	                    lineHeight: '20px',
 	                    position: 'relative',
 	                    display: 'block',
@@ -22093,7 +22063,7 @@
 	        };
 	    }
 
-	    _createClass(Item, [{
+	    _createClass(NavItem, [{
 	        key: 'render',
 	        value: function render() {
 	            var defStyle = this.getStyles();
@@ -22122,12 +22092,12 @@
 	        enumerable: true
 	    }]);
 
-	    var _Item = Item;
-	    Item = (0, _radium2['default'])(Item) || Item;
-	    return Item;
+	    var _NavItem = NavItem;
+	    NavItem = (0, _radium2['default'])(NavItem) || NavItem;
+	    return NavItem;
 	})(_react2['default'].Component);
 
-	exports['default'] = Item;
+	exports['default'] = NavItem;
 	module.exports = exports['default'];
 
 /***/ },
@@ -22162,6 +22132,8 @@
 	    _inherits(NavbarHeader, _React$Component);
 
 	    function NavbarHeader() {
+	        var _this = this;
+
 	        _classCallCheck(this, _NavbarHeader);
 
 	        _get(Object.getPrototypeOf(_NavbarHeader.prototype), 'constructor', this).apply(this, arguments);
@@ -22251,12 +22223,40 @@
 	                    width: '22px',
 	                    height: '2px',
 	                    borderRadius: '1px',
-	                    backgroundColor: '#888'
+	                    backgroundColor: '#888',
+	                    boxSizing: 'border-box'
 	                },
 	                burger: {
 	                    marginTop: '4px'
+	                },
+	                pseudoBefore: {
+	                    display: 'table',
+	                    content: ' ',
+	                    boxSizing: 'border-box'
+	                },
+	                pseudoAfter: {
+	                    clear: 'both',
+	                    display: 'table',
+	                    content: ' ',
+	                    boxSizing: 'border-box'
 	                }
 	            };
+	        };
+
+	        this.renderToggleButton = function () {
+	            var defStyle = _this.getStyles();
+	            return _react2['default'].createElement(
+	                'button',
+	                { type: 'button', style: [defStyle.navbarToggle], onClick: _this.props.navbarToggle },
+	                _react2['default'].createElement(
+	                    'span',
+	                    { style: [defStyle.srOnly] },
+	                    'Toggle navigation'
+	                ),
+	                _react2['default'].createElement('span', { style: [defStyle.iconBar] }),
+	                _react2['default'].createElement('span', { style: [defStyle.iconBar, defStyle.burger] }),
+	                _react2['default'].createElement('span', { style: [defStyle.iconBar, defStyle.burger] })
+	            );
 	        };
 	    }
 
@@ -22273,23 +22273,14 @@
 	            return _react2['default'].createElement(
 	                'div',
 	                { key: 'header', style: [defStyle.header, headerStyle && headerStyle] },
-	                _react2['default'].createElement(
-	                    'button',
-	                    { type: 'button', style: [defStyle.navbarToggle] },
-	                    _react2['default'].createElement(
-	                        'span',
-	                        { style: [defStyle.srOnly] },
-	                        'Toggle navigation'
-	                    ),
-	                    _react2['default'].createElement('span', { style: [defStyle.iconBar] }),
-	                    _react2['default'].createElement('span', { style: [defStyle.iconBar, defStyle.burger] }),
-	                    _react2['default'].createElement('span', { style: [defStyle.iconBar, defStyle.burger] })
-	                ),
+	                _react2['default'].createElement('span', { style: [defStyle.pseudoBefore] }),
+	                this.renderToggleButton(),
 	                _react2['default'].createElement(
 	                    'a',
 	                    { key: 'brand', style: [defStyle.brand, brandStyle && brandStyle], href: href },
 	                    name
-	                )
+	                ),
+	                _react2['default'].createElement('span', { style: [defStyle.pseudoAfter] })
 	            );
 	        }
 	    }], [{
@@ -22350,12 +22341,9 @@
 	        _get(Object.getPrototypeOf(_NavbarItems.prototype), 'constructor', this).apply(this, arguments);
 
 	        this.displayName = 'Navigation list of items';
-	        this.state = {
-	            open: false
-	        };
 
 	        this.getStyles = function () {
-	            return {
+	            var styles = {
 	                base: {
 	                    margin: '7.5px -15px',
 	                    listStyle: 'outside none none',
@@ -22374,9 +22362,10 @@
 	                    paddingRight: '15px',
 	                    paddingLeft: '15px',
 	                    overflowX: 'visible',
-	                    borderTop: '1px solid transparent',
-	                    boxShadow: '0px 1px 0px rgba(255, 255, 255, .1) inset',
+	                    borderTopWidth: '1px',
+	                    borderTopStyle: 'solid',
 	                    borderColor: '#E7E7E7',
+	                    boxShadow: '0px 1px 0px rgba(255, 255, 255, .1) inset',
 	                    marginRight: '-15px',
 	                    marginLeft: '-15px',
 	                    maxHeight: '340px',
@@ -22393,8 +22382,10 @@
 	                        display: 'block',
 	                        overflow: 'visible',
 	                        width: 'auto',
-	                        borderTop: '0px none',
-	                        boxShadow: 'none'
+	                        borderTopWidth: '0px',
+	                        borderTopStyle: 'none',
+	                        boxShadow: 'none',
+	                        overflowY: 'visible'
 	                    }
 	                },
 	                pseudoBefore: {
@@ -22409,6 +22400,11 @@
 	                    boxSizing: 'border-box'
 	                }
 	            };
+	            if (_this.props.collapseIn) {
+	                styles.collapse.display = 'block';
+	                styles.collapse.overflowY = 'auto';
+	            }
+	            return styles;
 	        };
 
 	        this.onClickHandler = function (activeIndex) {
@@ -22512,7 +22508,7 @@
 	    };
 
 	    this.getStyles = function () {
-	      return {
+	      var styles = {
 	        dropdown: {
 	          position: 'relative',
 	          display: 'block',
@@ -22533,7 +22529,10 @@
 	          borderLeft: '4px solid transparent'
 	        },
 	        link: {
-	          padding: '10px 15px',
+	          paddingTop: '10px',
+	          paddingBottom: '10px',
+	          paddingLeft: '15px',
+	          paddingRight: '15px',
 	          lineHeight: '20px',
 	          position: 'relative',
 	          display: 'block',
@@ -22543,13 +22542,11 @@
 	          color: '#777',
 
 	          ':hover': {
-	            color: '#333',
-	            backgroundColor: 'transparent'
+	            color: '#333'
 	          },
 
 	          ':focus': {
-	            color: '#333',
-	            backgroundColor: 'transparent'
+	            color: '#333'
 	          },
 
 	          '@media (min-width: 768px)': {
@@ -22558,6 +22555,10 @@
 	          }
 	        }
 	      };
+	      if (_this.props.index === _this.props.activeIndex) {
+	        styles.link.backgroundColor = _this.state.open ? '#e7e7e7' : 'transparent';
+	      }
+	      return styles;
 	    };
 
 	    this.renderChildren = function () {
@@ -22583,6 +22584,9 @@
 	    this.handleDocumentClick = function () {
 	      if (_this.state.open) {
 	        _this.setState({ open: false });
+
+	        // when all the dropdowns are closed, activeIndex is set to -1
+	        _this.props.parentCallBack(-1);
 	      }
 	    };
 
@@ -22614,7 +22618,14 @@
 	      var activeIndex = nextProps.activeIndex;
 
 	      if (index === activeIndex) {
-	        this.setState({ open: !this.state.open });
+	        if (this.state.open) {
+	          this.setState({ open: false });
+
+	          // when all the dropdowns are closed, activeIndex is set to -1
+	          this.props.parentCallBack(-1);
+	        } else {
+	          this.setState({ open: true });
+	        }
 	      } else {
 	        this.setState({ open: false });
 	      }
@@ -22666,7 +22677,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -22688,111 +22699,131 @@
 	var _radium2 = _interopRequireDefault(_radium);
 
 	var DropdownMenu = (function (_React$Component) {
-	  _inherits(DropdownMenu, _React$Component);
+	    _inherits(DropdownMenu, _React$Component);
 
-	  function DropdownMenu() {
-	    var _this = this;
+	    function DropdownMenu() {
+	        var _this = this;
 
-	    _classCallCheck(this, _DropdownMenu);
+	        _classCallCheck(this, _DropdownMenu);
 
-	    _get(Object.getPrototypeOf(_DropdownMenu.prototype), 'constructor', this).apply(this, arguments);
+	        _get(Object.getPrototypeOf(_DropdownMenu.prototype), 'constructor', this).apply(this, arguments);
 
-	    this.displayName = 'Dropdown menu items';
+	        this.displayName = 'Dropdown menu items';
 
-	    this.getStyles = function () {
-	      var _props = _this.props;
-	      var open = _props.open;
-	      var active = _props.active;
+	        this.getStyles = function () {
+	            var _props = _this.props;
+	            var open = _props.open;
+	            var active = _props.active;
 
-	      var styles = {
-	        menu: {
-	          position: 'absolute',
-	          top: '100%',
-	          left: '0',
-	          zIndex: '1000',
-	          float: 'left',
-	          minWidth: '160px',
-	          margin: '0px',
-	          padding: '5px 0px',
-	          fontSize: '14px',
-	          textAlign: 'left',
-	          listStyle: 'none',
-	          backgroundColor: '#fff',
-	          backgroundClip: 'padding-box',
-	          border: '1px solid #ccc',
-	          borderBottomLeftRadius: '4px',
-	          borderBottomRightRadius: '4px',
-	          boxShadow: '0 6px 12px #C9C9C9',
-	          boxSizing: 'border-box'
-	        },
-	        link: {
-	          display: 'block',
-	          padding: '3px 20px',
-	          clear: 'both',
-	          fontWeight: 'normal',
-	          lineHeight: '1.42857143',
-	          color: '#333',
-	          whiteSpace: 'nowrap',
-	          textDecoration: 'none',
-	          boxSizing: 'border-box',
+	            var styles = {
+	                menu: {
+	                    position: 'absolute',
+	                    top: '100%',
+	                    left: '0',
+	                    zIndex: '1000',
+	                    float: 'left',
+	                    minWidth: '160px',
+	                    margin: '0px',
+	                    padding: '5px 0px',
+	                    fontSize: '14px',
+	                    textAlign: 'left',
+	                    listStyle: 'none',
+	                    backgroundColor: '#fff',
+	                    backgroundClip: 'padding-box',
+	                    border: '1px solid #ccc',
+	                    borderBottomLeftRadius: '4px',
+	                    borderBottomRightRadius: '4px',
+	                    boxShadow: '0 6px 12px #C9C9C9',
+	                    boxSizing: 'border-box',
 
-	          ':hover': {
-	            color: '#262626',
-	            backgroundColor: '#f5f5f5'
-	          },
+	                    '@media (max-width: 767px)': {
+	                        position: 'static',
+	                        float: 'none',
+	                        width: 'auto',
+	                        marginTop: '0',
+	                        backgroundColor: 'transparent',
+	                        border: '0',
+	                        boxShadow: 'none'
+	                    }
+	                },
+	                link: {
+	                    display: 'block',
+	                    padding: '3px 20px',
+	                    clear: 'both',
+	                    fontWeight: 'normal',
+	                    lineHeight: '1.42857143',
+	                    color: '#333',
+	                    whiteSpace: 'nowrap',
+	                    textDecoration: 'none',
+	                    boxSizing: 'border-box',
 
-	          ':focus': {
-	            color: '#262626',
-	            backgroundColor: '#f5f5f5'
-	          }
-	        }
-	      };
-	      if (active) {
-	        styles.menu.display = open ? 'block' : 'none';
-	      } else {
-	        styles.menu.display = 'none';
-	      }
-	      return styles;
-	    };
-	  }
+	                    ':hover': {
+	                        color: '#262626',
+	                        backgroundColor: '#f5f5f5'
+	                    },
 
-	  _createClass(DropdownMenu, [{
-	    key: 'render',
-	    value: function render() {
-	      var defStyle = this.getStyles();
-	      var _props2 = this.props;
-	      var menuItems = _props2.menuItems;
-	      var style = _props2.style;
+	                    ':focus': {
+	                        color: '#262626',
+	                        backgroundColor: '#f5f5f5'
+	                    },
 
-	      return _react2['default'].createElement(
-	        'ul',
-	        { style: [defStyle.menu, style && style] },
-	        menuItems.map(function (item) {
-	          return _react2['default'].createElement(
-	            'li',
-	            { key: menuItems.indexOf(item) },
-	            _react2['default'].createElement(
-	              'a',
-	              { key: item.name, style: [defStyle.link], href: item.href },
-	              item.name
-	            )
-	          );
-	        })
-	      );
+	                    '@media (max-width: 767px)': {
+	                        backgroundColor: 'transparent',
+	                        color: '#777',
+
+	                        ':hover': {
+	                            color: '#333',
+	                            backgroundColor: 'transparent'
+	                        }
+	                    }
+	                }
+	            };
+	            if (active) {
+	                styles.menu.display = open ? 'block' : 'none';
+	            } else {
+	                styles.menu.display = 'none';
+	            }
+	            return styles;
+	        };
 	    }
-	  }], [{
-	    key: 'propTypes',
-	    value: {
-	      menuItems: _react2['default'].PropTypes.array,
-	      style: _react2['default'].PropTypes.object,
-	      open: _react2['default'].PropTypes.bool
-	    },
-	    enumerable: true
-	  }]);
 
-	  var _DropdownMenu = DropdownMenu;
-	  DropdownMenu = (0, _radium2['default'])(DropdownMenu) || DropdownMenu;
-	  return DropdownMenu;
+	    _createClass(DropdownMenu, [{
+	        key: 'render',
+	        value: function render() {
+	            var defStyle = this.getStyles();
+	            var _props2 = this.props;
+	            var menuItems = _props2.menuItems;
+	            var style = _props2.style;
+
+	            return _react2['default'].createElement(
+	                'ul',
+	                { style: [defStyle.menu, style && style] },
+	                menuItems.map(function (item) {
+	                    return _react2['default'].createElement(
+	                        'li',
+	                        { key: menuItems.indexOf(item) },
+	                        _react2['default'].createElement(
+	                            'a',
+	                            { key: item.name, style: [defStyle.link], href: item.href },
+	                            item.name
+	                        )
+	                    );
+	                })
+	            );
+	        }
+	    }], [{
+	        key: 'propTypes',
+	        value: {
+	            menuItems: _react2['default'].PropTypes.array,
+	            style: _react2['default'].PropTypes.object,
+	            open: _react2['default'].PropTypes.bool
+	        },
+	        enumerable: true
+	    }]);
+
+	    var _DropdownMenu = DropdownMenu;
+	    DropdownMenu = (0, _radium2['default'])(DropdownMenu) || DropdownMenu;
+	    return DropdownMenu;
 	})(_react2['default'].Component);
 
 	exports['default'] = DropdownMenu;
