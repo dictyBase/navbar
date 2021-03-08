@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "path-is-absolute": "^1.0.0",
-    "radium": "^0.13.4",
+    "radium": "^0.16.0",
     "react": "^0.13.3"
   }
 }
